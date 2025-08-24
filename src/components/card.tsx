@@ -1,83 +1,55 @@
-import React from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-export default function Card({ Id, image, title, brand, price }) {
-  let navigate = useNavigate();
+import { FaCartPlus } from "react-icons/fa";
+
+export default function Card({
+  Id,
+  image,
+  title,
+  brand,
+  price,
+  discountPercentage,
+}) {
   return (
     <>
       <div className="w-full sm:w-1/4 ">
-        <Link to={`/${Id}`}>
-          <div className="mx-2 my-1  bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 cursor-pointer hover:shadow-2xl h-[350px]">
-            <img className="p-8 rounded-t-lg" src={image} alt="product image" />
-            <div className="px-5 pb-5">
-              <h5 className="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
-                {title}
-              </h5>
-
-              <h2>{brand}</h2>
-              {/* <div className="flex items-center mt-2.5 mb-5">
-            <div className="flex items-center space-x-1 rtl:space-x-reverse">
-              <svg
-                className="w-4 h-4 text-yellow-300"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 22 20"
-              >
-                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-              </svg>
-              <svg
-                className="w-4 h-4 text-yellow-300"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 22 20"
-              >
-                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-              </svg>
-              <svg
-                className="w-4 h-4 text-yellow-300"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 22 20"
-              >
-                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-              </svg>
-              <svg
-                className="w-4 h-4 text-yellow-300"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 22 20"
-              >
-                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-              </svg>
-              <svg
-                className="w-4 h-4 text-gray-200 dark:text-gray-600"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 22 20"
-              >
-                <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-              </svg>
+        <div className="relative mx-2 my-1  bg-white border border-gray-200 hover:border-blue-300 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700  hover:shadow-2xl h-[350px]">
+          <Link to={`/${Id}`}>
+            <img
+              className="p-8 rounded-t-lg h-40 pb-2 cursor-pointer"
+              src={image}
+              alt="product image"
+            />
+          </Link>
+          <hr className="my-2 bg-gray-300 border border-gray-300" />
+          <div className="px-5 pb-5">
+            <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">
+              {title}
+            </h5>
+            <div className="flex items-center my-2">
+              <p className="text-md  text-gray-900 dark:text-white ">
+                ${(price * (1 - discountPercentage / 100)).toFixed(2)}
+              </p>
+              <p className="text-md  text-gray-500 dark:text-white line-through ps-2">
+                ${price}
+              </p>
             </div>
-            <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm dark:bg-blue-200 dark:text-blue-800 ms-3">
-              5.0
-            </span>
-          </div> */}
-              <div className="flex items-center justify-between">
-                <span className="text-lg font-bold text-gray-900 dark:text-white">
-                  ${price}
-                </span>
-
-                <span>?</span>
+            <hr className="my-2 bg-gray-300 border border-gray-300" />
+            <div className="grid grid-cols-2  py-2">
+              <h4 className="text-md text-teal-500">{brand}</h4>
+              <div className=" flex justify-end text-xl text-teal-500 cursor-pointer hover:text-2xl">
+                <FaCartPlus />
               </div>
             </div>
           </div>
-        </Link>
+          {/* discount box */}
+          <div className=" top-0 absolute right-0 bg-blue-300 rounded-tr-lg rounded-bl-lg  flex flex-col items-center justify-center h-15 gap-0">
+            <span className="text-white font-semibold px-1">
+              %{discountPercentage}
+            </span>
+
+            <span className="text-white font-semibold px-1">Off</span>
+          </div>
+        </div>
       </div>
     </>
   );
