@@ -1,9 +1,10 @@
 import Nav from "./components/Nav";
-import Footer from "./components/Footer";
+import FooterComponent from "./components/Footer";
 import NotFound from "./components/NotFound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Details from "./components/details";
 import Home from "./components/Home";
+import Cart from "./components/Cart";
 function App() {
   return (
     <>
@@ -12,10 +13,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/:productId" element={<Details />} />
-          <Route path="/cart" element={<h1>cart</h1>} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
+        <FooterComponent />
       </BrowserRouter>
     </>
   );

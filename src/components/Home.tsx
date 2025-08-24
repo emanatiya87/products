@@ -1,15 +1,16 @@
 import { useEffect } from "react";
+import { useProductStore } from "../store/productStore";
+
 import Card from "./card";
 import Header from "./header";
-import { useProductStore } from "../store/productStore";
 import CategoriesCards from "./categoriesCards";
+import ToastComponent from "./Toast";
 
 export default function Home() {
   const { products, fetchProducts, category } = useProductStore();
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
-
   return (
     <>
       <Header />
@@ -19,7 +20,7 @@ export default function Home() {
           Shop from <span className="text-blue-400"> Top categories</span>
         </h2>
       </section>
-      <section className=" my-4 flex items-center justify-center">
+      <section className=" my-4 flex flex-wrap items-center justify-center">
         <CategoriesCards type={"beauty"} />
         <CategoriesCards type={"fragrances"} />
         <CategoriesCards type={"groceries"} />
@@ -29,17 +30,11 @@ export default function Home() {
         {products
           .filter((p) => p.category === category)
           .map((p) => (
-            <Card
-              key={p.id}
-              Id={p.id}
-              title={p.title}
-              brand={p.brand}
-              image={p.images[0]}
-              price={p.price}
-              discountPercentage={p.discountPercentage}
-            />
+            <Card key={p.id} cardProduct={p} />
           ))}
       </div>
+      {/* toast */}
+      <ToastComponent />
     </>
   );
 }

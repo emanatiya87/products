@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useProductStore } from "../store/productStore";
 import SmallImg from "./smallImg";
+import { FaTruck, FaClock } from "react-icons/fa";
+import { LiaStarSolid } from "react-icons/lia";
+
 export default function Details() {
   const { productId } = useParams<{ productId: string }>();
   const { loaded, productDetails, selectedImgId, fetchProductDetails } =
@@ -27,7 +30,7 @@ export default function Details() {
           >
             <div className="w-[80%] mx-auto grid grid-cols-5 gap-4">
               <div className="col-span-2 lg:col-span-1 flex flex-col content-between h-[40vh] lg:h-[70vh] overflow-auto gap-2 custom-scroll">
-                {productDetails.images.map((img, i) => {
+                {productDetails.images.map((_, i) => {
                   return <SmallImg index={i} key={i} />;
                 })}
               </div>
@@ -40,11 +43,29 @@ export default function Details() {
               <div className="lg:col-span-2 col-span-5 px-2">
                 <h2 className="font-bold text-xl">{productDetails.title}</h2>
                 <div className="flex items-center my-3 flex-wrap">
-                  <p className="md:pe-2 pe-0.5">stars{productDetails.rating}</p>
-                  <p className="text-lg text-gray-500 font-semibold relative after:content-[''] after:absolute after:top-0 after:right-[-12px] after:w-[2px] after:h-full after:bg-gray-400 after:ml-2">
-                    {productDetails.rating}
+                  <p className="md:pe-2 pe-0.5 flex">
+                    {/* rating with stars */}
+                    {[...Array(Math.round(productDetails.rating ?? 0))].map(
+                      (_, i) => (
+                        <LiaStarSolid
+                          key={i}
+                          className="text-yellow-300 text-xl"
+                        />
+                      )
+                    )}
+                    {[...Array(5 - Math.round(productDetails.rating ?? 0))].map(
+                      (_, i) => (
+                        <LiaStarSolid
+                          key={i}
+                          className="text-gray-300 text-xl"
+                        />
+                      )
+                    )}
                   </p>
-                  <p className="ml-4 text-teal-300 text-xl">
+                  <p className="text-lg text-gray-500 font-semibold relative after:content-[''] after:absolute after:top-0 after:right-[-12px] after:w-[2px] after:h-full after:bg-gray-400 after:ml-2">
+                    ({productDetails.rating})
+                  </p>
+                  <p className="ml-4 text-teal-400 text-xl">
                     {productDetails.availabilityStatus}
                   </p>
                 </div>
@@ -56,7 +77,7 @@ export default function Details() {
                 <div className="my-4 border border-black">
                   <div className="flex gap-4 items-center w-full p-2">
                     <div>
-                      <i className="fa-solid fa-truck"></i>
+                      <FaTruck className="text-2xl" />
                     </div>
                     <div>
                       <h3>Free Delivery</h3>
@@ -67,7 +88,7 @@ export default function Details() {
                   </div>
                   <div className="flex gap-4 items-center w-full p-2 border-t">
                     <div>
-                      <i className="fa-regular fa-clock"></i>
+                      <FaClock className="text-2xl" />
                     </div>
                     <div>
                       <h3>{productDetails.shippingInformation}</h3>
