@@ -1,69 +1,36 @@
-# React + TypeScript + Vite
+# Products E-commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple **e-commerce web app** built with **React + Vite + TypeScript**.  
+It shows products, allows navigation between pages, and uses global state for things like the cart.
 
-Currently, two official plugins are available:
+## Live Demo
+👉 [View the site here](https://products-ecommerce-ts.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What I Used
+- **React + Vite + TypeScript** → main framework and build tool  
+- **React Router** → to handle multiple pages (routes)  
+- **Tailwind CSS** → for styling and responsive design  
+- **Zustand** → for state management (cart, products, etc.)  
+- **Axios** → for fetching product data from an API  
 
-## Expanding the ESLint configuration
+## How to Run It
+1. Clone this repo:
+   ```bash
+   git clone https://github.com/emanatiya87/products.git
+   cd products
+2. Install dependencies:
+   npm install
+3. Run development server:
+   npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Show list of products
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Navigate to product detail page
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Simple cart using Zustand
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Responsive layout with Tailwind
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   
