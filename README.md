@@ -36,4 +36,6 @@ npm install
 npm run dev
 ```
 
-VIEW: https://products-ecommerce-ts.netlify.app/
+# Live Demo
+
+Live Demo: https://products-ecommerce-ts.netlify.app/
