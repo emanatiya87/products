@@ -24,7 +24,7 @@ The UI is styled using **Tailwind CSS** and **Flowbite React components**.
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/products-ecommerce.git
+git clone https://github.com/emanatiya87/products.git
 
 # Navigate into the project
 cd products-ecommerce
@@ -35,3 +35,5 @@ npm install
 # Start development server
 npm run dev
 ```
+
+VIEW: https://products-ecommerce-ts.netlify.app/
