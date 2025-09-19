@@ -1,4 +1,4 @@
-import { Footer, FooterCopyright, FooterDivider } from "flowbite-react";
+import { Footer, FooterDivider } from "flowbite-react";
 
 export default function FooterComponent() {
   return (
@@ -6,7 +6,7 @@ export default function FooterComponent() {
       <Footer container>
         <div className="w-full text-center">
           <FooterDivider />
-          <FooterCopyright href="#" by="Flowbite™" year={2025} />
+          <p className="text-gray-700">© 2025 Eman | Thank you for visiting</p>
         </div>
       </Footer>
     </>
