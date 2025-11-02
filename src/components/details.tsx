@@ -4,7 +4,8 @@ import { useProductStore } from "../store/productStore";
 import SmallImg from "./smallImg";
 import { FaTruck, FaClock } from "react-icons/fa";
 import { LiaStarSolid } from "react-icons/lia";
-
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 export default function Details() {
   const { productId } = useParams<{ productId: string }>();
   const { loaded, productDetails, selectedImgId, fetchProductDetails } =
@@ -35,10 +36,12 @@ export default function Details() {
                 })}
               </div>
               <div className="lg:col-span-2 col-span-3 h-[40vh] lg:h-[70vh] overflow-hidden flex items-center">
-                <img
-                  src={productDetails.images[selectedImgId]}
-                  alt={productDetails.title}
-                />
+                <Zoom>
+                  <img
+                    src={productDetails.images[selectedImgId]}
+                    alt={productDetails.title}
+                  />
+                </Zoom>
               </div>
               <div className="lg:col-span-2 col-span-5 px-2">
                 <h2 className="font-bold text-xl">{productDetails.title}</h2>
