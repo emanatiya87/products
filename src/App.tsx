@@ -9,23 +9,27 @@ import Cart from "./components/Cart";
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/:productId"
-            element={
-              <React.Suspense fallback="Data is loading .....">
-                <Details />
-              </React.Suspense>
-            }
-          />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <FooterComponent />
-      </BrowserRouter>
+      <div className="flex flex-col min-h-screen">
+        <BrowserRouter>
+          <Nav />
+          <div className="flex-1 ">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route
+                path="/:productId"
+                element={
+                  <React.Suspense fallback="Data is loading .....">
+                    <Details />
+                  </React.Suspense>
+                }
+              />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+          <FooterComponent />
+        </BrowserRouter>
+      </div>
     </>
   );
 }
