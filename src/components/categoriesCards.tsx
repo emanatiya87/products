@@ -15,7 +15,7 @@ export default function CategoriesCards({ type }: catProps) {
         >
           <img src={`/images/${type}.jpg`} alt={type} className="" />
         </div>
-        <h3>{type}</h3>
+        <h3 className="text-gray-900 dark:text-white">{type}</h3>
       </div>
     </>
   );

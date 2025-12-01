@@ -9,7 +9,7 @@ import Cart from "./components/Cart";
 function App() {
   return (
     <>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen dark:bg-gray-700">
         <BrowserRouter>
           <Nav />
           <div className="flex-1 ">

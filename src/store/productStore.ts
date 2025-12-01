@@ -15,7 +15,14 @@ export interface Product {
   availabilityStatus?: string;
   shippingInformation?: string;
   rating?: number;
-  reviews?: string[];
+  reviews: Reviewer[];
+}
+export interface Reviewer {
+  reviewerName: string;
+  reviewerEmail: string;
+  comment: string;
+  rating: number;
+  date: string;
 }
 interface QuantityItem {
   id: number;

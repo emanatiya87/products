@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { LuListCollapse } from "react-icons/lu";
 import { FaCartShopping } from "react-icons/fa6";
 import Dark from "./dark";
-
 export default function Nav() {
   const [openNav, setOpenNav] = useState(false);
   return (

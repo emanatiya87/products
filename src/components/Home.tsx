@@ -16,7 +16,7 @@ export default function Home() {
       <Header />
       {/* filteration */}
       <section className="w-[80%] mx-auto my-4">
-        <h2 className="text-gray-500 font-bold border-b-4 border-b-blue-400 inline py-2  ">
+        <h2 className="text-gray-500 dark:text-white font-bold border-b-4 border-b-blue-400 inline py-2  ">
           Shop from <span className="text-blue-400"> Top categories</span>
         </h2>
       </section>

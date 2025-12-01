@@ -6,7 +6,9 @@ export default function FooterComponent() {
       <Footer container>
         <div className="w-full text-center">
           <FooterDivider />
-          <p className="text-gray-700">© 2025 Eman | Thank you for visiting</p>
+          <p className="text-gray-700 dark:text-white">
+            © 2025 Eman | Thank you for visiting
+          </p>
         </div>
       </Footer>
     </>

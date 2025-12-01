@@ -6,6 +6,7 @@ import { FaTruck, FaClock } from "react-icons/fa";
 import { LiaStarSolid } from "react-icons/lia";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import Reviews from "./reviews";
 export default function Details() {
   const { productId } = useParams<{ productId: string }>();
   const { loaded, productDetails, selectedImgId, fetchProductDetails } =
@@ -44,7 +45,9 @@ export default function Details() {
                 </Zoom>
               </div>
               <div className="lg:col-span-2 col-span-5 px-2">
-                <h2 className="font-bold text-xl">{productDetails.title}</h2>
+                <h2 className="font-bold text-xl text-gray-900 dark:text-white">
+                  {productDetails.title}
+                </h2>
                 <div className="flex items-center my-3 flex-wrap">
                   <p className="md:pe-2 pe-0.5 flex">
                     {/* rating with stars */}
@@ -72,39 +75,52 @@ export default function Details() {
                     {productDetails.availabilityStatus}
                   </p>
                 </div>
-                <h2 className="font-semibold text-xl">
+                <h2 className="font-semibold text-xl text-gray-900 dark:text-white">
                   ${productDetails.price}
                 </h2>
-                <p className="my-2 text-lg">{productDetails.description}</p>
+                <p className="my-2 text-lg text-gray-900 dark:text-white">
+                  {productDetails.description}
+                </p>
                 <hr />
-                <div className="my-4 border border-black">
+                <div className="my-4 border border-black dark:border-white">
                   <div className="flex gap-4 items-center w-full p-2">
                     <div>
-                      <FaTruck className="text-2xl" />
+                      <FaTruck className="text-2xl text-gray-900 dark:text-white" />
                     </div>
                     <div>
-                      <h3>Free Delivery</h3>
-                      <p className="underline">
+                      <h3 className="text-gray-900 dark:text-white">
+                        Free Delivery
+                      </h3>
+                      <p className="underline text-gray-900 dark:text-white">
                         Enter Your Postal code for delivery
                       </p>
                     </div>
                   </div>
-                  <div className="flex gap-4 items-center w-full p-2 border-t">
+                  <div className="flex gap-4 items-center w-full p-2 border-t dark:border-white">
                     <div>
-                      <FaClock className="text-2xl" />
+                      <FaClock className="text-2xl text-gray-900 dark:text-white" />
                     </div>
                     <div>
-                      <h3>{productDetails.shippingInformation}</h3>
+                      <h3 className="text-gray-900 dark:text-white">
+                        {productDetails.shippingInformation}
+                      </h3>
                     </div>
                   </div>
                 </div>
                 <details>
-                  <summary className="text-lg text-gray-500 font-semibold cursor-pointer ">
+                  <summary className="text-lg text-gray-500  dark:text-white font-semibold cursor-pointer ">
                     reviews {productDetails?.reviews?.length}
                   </summary>
 
-                  <div className="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-                    <div className="flex items-center justify-between mb-4"></div>
+                  <div className="w-full p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                    <div className="flex flex-col gap-2 items-center justify-between mb-4 ">
+                      {productDetails?.reviews?.map((rev) => (
+                        <Reviews
+                          key={`${rev.reviewerName}-${rev.date}`}
+                          reviewer={rev}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </details>
               </div>
