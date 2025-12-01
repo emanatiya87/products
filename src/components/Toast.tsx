@@ -1,5 +1,4 @@
 "use client";
-
 import { Toast, ToastToggle } from "flowbite-react";
 import { HiCheck } from "react-icons/hi";
 import { useProductStore } from "../store/productStore";
