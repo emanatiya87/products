@@ -10,7 +10,7 @@ export default function Card({ cardProduct }: CardProps) {
 
   return (
     <>
-      <div className="w-full lg:w-1/4  md:w-2/6 sm:w-1/2">
+      <div className="w-full sm:w-1/2 md:w-2/6 lg:w-1/4">
         <div className="relative mx-2 my-1  bg-white border border-gray-200 hover:border-blue-300 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700  hover:shadow-2xl h-[350px]">
           <Link to={`/${cardProduct.id}`}>
             <img
